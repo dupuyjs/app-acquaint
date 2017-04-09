@@ -9,9 +9,12 @@ using Android.OS;
 using Android.Runtime;
 using Autofac;
 using Autofac.Extras.CommonServiceLocator;
-using HockeyApp.Android;
 using Microsoft.Practices.ServiceLocation;
 using Plugin.CurrentActivity;
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.Azure.Mobile.Crashes;
+using System.Collections.Generic;
 
 namespace Acquaint.Native.Droid
 {
@@ -37,7 +40,9 @@ namespace Acquaint.Native.Droid
 
             base.OnCreate();
 
-			CrashManager.Register(this, Settings.HockeyAppId);
+            MobileCenter.Start(Settings.MobileCenterAppId, typeof(Analytics), typeof(Crashes));
+
+            Analytics.TrackEvent("OnCreate", new Dictionary<string, string> { { "AppId", Settings.MobileCenterAppId } });
 
             RegisterActivityLifecycleCallbacks(this);
         }

@@ -88,6 +88,9 @@ namespace Acquaint.Util
 		private const string HockeyAppIdKey = "HockeyAppId_key";
 		private static readonly string HockeyAppIdDefault = "11111111222222223333333344444444"; // This is just a placeholder value. Replace with your real HockeyApp App ID.
 
+        private const string MobileCenterAppIdKey = "MobileCenterAppId_Key";
+        private static readonly string MobileCenterAppIdDefault = "7bae6824-fb8c-4856-ab46-15d5a3ca863d"; // This is just a placeholder value.
+
         private const string BingMapsKeyKey = "BingMapsKey_key";
         private static readonly string BingMapsKeyDefault = "UW0peICp3gljJyhqQKFZ~R3XF1I5BvWmWmkD4ujytTA~AoUOqpk2nJB-Wh7wH-9S-zaG-w6sygLitXugNOqm71wx_nc6WHIt6Lb29gyTU04X";
 
@@ -114,6 +117,12 @@ namespace Acquaint.Util
 			get { return AppSettings.GetValueOrDefault<string>(HockeyAppIdKey, HockeyAppIdDefault); }
 			set { AppSettings.AddOrUpdateValue<string>(HockeyAppIdKey, value); }
 		}
+
+        public static string MobileCenterAppId
+        {
+            get { return AppSettings.GetValueOrDefault<string>(MobileCenterAppIdKey, MobileCenterAppIdDefault); }
+            set { AppSettings.AddOrUpdateValue<string>(MobileCenterAppIdKey, value); }
+        }
 
         public static string BingMapsKey
         {
